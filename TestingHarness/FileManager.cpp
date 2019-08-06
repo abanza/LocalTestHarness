@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // FileManager.cpp - FileManager class definition                            //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #include "../Includes/FileManager.h"
 #include "../Includes/TestDriver.h"
@@ -16,7 +11,7 @@
 #include <stdexcept>
 #include <string>
 
-Tests FileManager::readTestFile(const std::string& filename) 
+Tests FileManager::readTestFile(const std::string& filename)
 {
 
 	// open our test xml file
@@ -25,12 +20,12 @@ Tests FileManager::readTestFile(const std::string& filename)
 	Tests tests;
 	bool root = true;
 
-	if (inFileStrm) 
+	if (inFileStrm)
 	{
 		std::string test1;
 		std::string buffer;
 
-		while (std::getline(inFileStrm, buffer)) 
+		while (std::getline(inFileStrm, buffer))
 		{
 			//test1.insert(buffer);
 			test1 += buffer;
@@ -46,11 +41,11 @@ Tests FileManager::readTestFile(const std::string& filename)
 			//std::cout << "\ntag:     " << rdr.tag().c_str();
 			const std::string tag = rdr.tag();
 
-			if ("tests" == tag) 
+			if ("tests" == tag)
 			{
 
 				// simple validation check
-				if (!root || "none" != lastTag) 
+				if (!root || "none" != lastTag)
 				{
 					// oops big error throw exception
 					throw std::runtime_error("<tests> must be the root element.");
@@ -58,11 +53,11 @@ Tests FileManager::readTestFile(const std::string& filename)
 				root = false;
 				lastTag = "tests";
 			}
-			else if ("test" == tag) 
+			else if ("test" == tag)
 			{
 
 				// simple validation check
-				if (root || ("unknown" == lastTag)) 
+				if (root || ("unknown" == lastTag))
 				{
 					// oops big error throw exception
 					throw std::runtime_error("XML parsing error.");
@@ -72,10 +67,10 @@ Tests FileManager::readTestFile(const std::string& filename)
 				std::string name;
 
 				XmlReader::attribElems attribs = rdr.attributes();
-				for (size_t i = 0; i < attribs.size(); ++i) 
+				for (size_t i = 0; i < attribs.size(); ++i)
 				{
 
-					if ("name" == attribs[i].first) 
+					if ("name" == attribs[i].first)
 					{
 						name = attribs[i].second;
 					}
@@ -85,10 +80,10 @@ Tests FileManager::readTestFile(const std::string& filename)
 				root = false;
 				lastTag = "test";
 			}
-			else if ("testdriver" == tag) 
+			else if ("testdriver" == tag)
 			{
 
-				if (root || ("unknown" == lastTag)) 
+				if (root || ("unknown" == lastTag))
 				{
 					// oops big error throw exception
 					throw std::runtime_error("XML parsing error.");
@@ -101,24 +96,24 @@ Tests FileManager::readTestFile(const std::string& filename)
 				std::string dll_method;
 
 				XmlReader::attribElems attribs = rdr.attributes();
-				for (size_t i = 0; i < attribs.size(); ++i) 
+				for (size_t i = 0; i < attribs.size(); ++i)
 				{
 
-					if ("name" == attribs[i].first) 
+					if ("name" == attribs[i].first)
 					{
 						name = attribs[i].second;
 					}
-					else if ("dllname" == attribs[i].first) 
+					else if ("dllname" == attribs[i].first)
 					{
 						dll_name = attribs[i].second;
 					}
-					else if ("dllmethod" == attribs[i].first) 
+					else if ("dllmethod" == attribs[i].first)
 					{
 						dll_method = attribs[i].second;
 					}
 				}
 
-				if (tests.size() < 1) 
+				if (tests.size() < 1)
 				{
 					// oops big error throw exception
 					throw std::runtime_error("<testdriver> must be a child of <test>.");
@@ -129,10 +124,10 @@ Tests FileManager::readTestFile(const std::string& filename)
 				root = false;
 				lastTag = "testdriver";
 			}
-			else if ("testedcode" == tag) 
+			else if ("testedcode" == tag)
 			{
 
-				if (root || !("testdriver" == lastTag || "testedcode" == lastTag)) 
+				if (root || !("testdriver" == lastTag || "testedcode" == lastTag))
 				{
 					// oops big error throw exception
 					throw std::runtime_error("XML parsing error.");
@@ -143,13 +138,13 @@ Tests FileManager::readTestFile(const std::string& filename)
 				XmlReader::attribElems attribs = rdr.attributes();
 				for (size_t i = 0; i < attribs.size(); ++i)
 				{
-					if ("dllname" == attribs[i].first) 
+					if ("dllname" == attribs[i].first)
 					{
 						dll_name = attribs[i].second;
 					}
 				}
 
-				if (tests.size() < 1) 
+				if (tests.size() < 1)
 				{
 					// oops big error throw exception
 					throw std::runtime_error("<testdriver> must be a child of <test>.");
@@ -157,7 +152,7 @@ Tests FileManager::readTestFile(const std::string& filename)
 				// create a test driver and add it to the last test
 				Test& t = tests.back();
 
-				if(t._testdrivers.size() <1) 
+				if (t._testdrivers.size() < 1)
 				{
 					// oops big error throw exception
 					throw std::runtime_error("<testedcode> must be a child of <testdriver>.");
@@ -168,7 +163,7 @@ Tests FileManager::readTestFile(const std::string& filename)
 				root = false;
 				lastTag = "testedcode";
 			}
-			else 
+			else
 			{
 
 				// simple validation check
@@ -184,7 +179,7 @@ Tests FileManager::readTestFile(const std::string& filename)
 			}
 		}
 	}
-	else 
+	else
 	{
 		std::cout << "Could not open input file: " << filename << std::endl << std::endl << std::endl;
 	}

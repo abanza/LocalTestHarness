@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestHarness.h - TestHarness class definition                              //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef TESTHARNESS_H
 #define TESTHARNESS_H
@@ -39,7 +34,7 @@ LOGGER_ERROR, LOGGER_WARN, LOGGER_INFO, LOGGER_DEBUG, LOGGER_TRACE
 *  reportingLevel  - controls the reporting level for the testing harness,
 *	showTimestamp   - boolean flag to set whether to add an optional timestamp to logging messages.
 */
-typedef struct _testingContext 
+typedef struct _testingContext
 {
 	Logger* logger;
 	bool showTimestamp;
@@ -68,8 +63,8 @@ public:
 
 	virtual bool run(const std::string& runContext, TestLogger& testLogger) const = 0;
 
-	std::string getRunnerName() const 
-	{ 
+	std::string getRunnerName() const
+	{
 		return this->runnerName;
 	};
 
@@ -179,12 +174,12 @@ public:
 	/*
 	* logging methods by severity, takes in the context string and a message to log
 	*/
-	void log(int severity, const std::string&ctxStr, const std::string& msg) const;
-	void trace(const std::string&ctxStr, const std::string& msg) const;
-	void debug(const std::string&ctxStr, const std::string& msg) const;
-	void info(const std::string&ctxStr, const std::string& msg) const;
-	void warn(const std::string&ctxStr, const std::string& msg) const;
-	void error(const std::string&ctxStr, const std::string& msg) const;
+	void log(int severity, const std::string& ctxStr, const std::string& msg) const;
+	void trace(const std::string& ctxStr, const std::string& msg) const;
+	void debug(const std::string& ctxStr, const std::string& msg) const;
+	void info(const std::string& ctxStr, const std::string& msg) const;
+	void warn(const std::string& ctxStr, const std::string& msg) const;
+	void error(const std::string& ctxStr, const std::string& msg) const;
 
 	// A method to set all of the testing parameters all at once
 	void setTestingContext(const TestingContext&);

@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestLogger.h - TestLogger class definition                                //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef TEST_LOGGER_H
 #define TEST_LOGGER_H
@@ -30,12 +25,12 @@
 #define LOGGER_DEBUG  3
 #define LOGGER_TRACE  4
 
-/*
- * A basic Logger class used by the test Logger, allows the user to attach multiple ostreams for output,
- *	and provides for logging messages at different granularities, and filtering them for output.
- *  The granularity levels are defined above:
- */
-class TESTING_HARNESS_API Logger 
+ /*
+  * A basic Logger class used by the test Logger, allows the user to attach multiple ostreams for output,
+  *	and provides for logging messages at different granularities, and filtering them for output.
+  *  The granularity levels are defined above:
+  */
+class TESTING_HARNESS_API Logger
 {
 public:
 
@@ -62,12 +57,12 @@ public:
 	/*
 	* logging methods by severity, takes in the context string and a message to log
 	*/
-	void log(int severity, const std::string&ctxStr, const std::string& msg) const;
-	void trace(const std::string&ctxStr, const std::string& msg) const;
-	void debug(const std::string&ctxStr, const std::string& msg) const;
-	void info(const std::string&ctxStr, const std::string& msg) const;
-	void warn(const std::string&ctxStr, const std::string& msg) const;
-	void error(const std::string&ctxStr, const std::string& msg) const;
+	void log(int severity, const std::string& ctxStr, const std::string& msg) const;
+	void trace(const std::string& ctxStr, const std::string& msg) const;
+	void debug(const std::string& ctxStr, const std::string& msg) const;
+	void info(const std::string& ctxStr, const std::string& msg) const;
+	void warn(const std::string& ctxStr, const std::string& msg) const;
+	void error(const std::string& ctxStr, const std::string& msg) const;
 
 	// gets and sets the severity for filtering messages
 	int  getSeverity(void) const;

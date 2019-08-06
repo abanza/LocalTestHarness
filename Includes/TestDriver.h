@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestDriver.h - TestDriver class definition                                //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef TEST_DRIVER_H
 #define TEST_DRIVER_H
@@ -18,7 +13,7 @@
 /*
 *  The class to read in the TestDriver Elemts into
 */
-typedef struct _dll_ref 
+typedef struct _dll_ref
 {
 
 	std::string _dll_nm;
@@ -30,7 +25,7 @@ typedef struct _dll_ref
 /*
 *  The class to read in the TestDriver Elemts into
 */
-typedef struct _tested_code : public DLLRef 
+typedef struct _tested_code : public DLLRef
 {
 
 	_tested_code(const std::string& dll_nm)
@@ -40,7 +35,7 @@ typedef struct _tested_code : public DLLRef
 /*
 *  The class to read in the TestDriver Elements into
 */
-typedef struct _test_driver : public DLLRef 
+typedef struct _test_driver : public DLLRef
 {
 	std::string _test_driver_name;
 	std::string _factory_method_nm;
@@ -50,7 +45,7 @@ typedef struct _test_driver : public DLLRef
 		: _dll_ref(dll_name), _test_driver_name(name), _factory_method_nm(dll_factory_method) {}
 } TestDriver;
 
-typedef struct _test 
+typedef struct _test
 {
 	std::string _name;
 	std::vector<TestDriver> _testdrivers;
@@ -64,7 +59,7 @@ typedef std::vector<Test> Tests;
 * The ITest interface that must be implmented for every tested code runner.  The
 *   Executor of the tests will first call setup(...), followed by runTests() follwed by teardown()
 */
-typedef struct _itest_t 
+typedef struct _itest_t
 {
 	virtual void setup(const TestingContext* const, const std::vector<TestedCode>&) = 0;
 

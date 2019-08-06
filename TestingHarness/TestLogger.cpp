@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestLogger.cpp - TestLogger class definition                              //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #include <chrono>
 #include <iostream>
@@ -19,7 +14,7 @@
 
 using std::string;
 
-std::string asString (const std::chrono::system_clock::time_point& tp)
+std::string asString(const std::chrono::system_clock::time_point& tp)
 {
 
 	// convert to system time:
@@ -54,9 +49,9 @@ static string getRunnerName(const string& ctxStr)
 
 // Default no argument constructor to create a root logger
 TestLogger::TestLogger()
-	: testResults(true), showTimestamp(true), 
-	  showDetailMessages(true), showAssertionDetails(true),
-	  _logger(nullptr) 
+	: testResults(true), showTimestamp(true),
+	showDetailMessages(true), showAssertionDetails(true),
+	_logger(nullptr)
 {
 
 	this->_logger = Logger(&std::cout);
@@ -154,7 +149,7 @@ void TestLogger::logTestCaseBegin(const std::string& ctxStr)
 //   usage logTestCaseAssertion(contextStr, "variable/assertion name", 
 //				"string to represent expected value", "string to represent actual value", 
 //				boolean result);
-void TestLogger::logTestCaseAssertion(const std::string&ctxStr, const std::string& assertMsg, bool assertRslt)
+void TestLogger::logTestCaseAssertion(const std::string& ctxStr, const std::string& assertMsg, bool assertRslt)
 {
 	if (showAssertionDetails)
 	{
@@ -209,7 +204,7 @@ void TestLogger::logTestCaseFailWithException(const std::string& ctxStr, const s
 	if (showDetailMessages)
 	{
 		std::stringstream s;
-		currentTimeStamp(s) << "Test Case " << getRunnerName(ctxStr) << " failed with exception: message =\"" 
+		currentTimeStamp(s) << "Test Case " << getRunnerName(ctxStr) << " failed with exception: message =\""
 			<< e.what() << "\"";
 		_logger.error(ctxStr, s.str());
 

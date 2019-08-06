@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Assertion.h - Assertion class definition                                  //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef ASSERTION_H
 #define ASSERTION_H
@@ -23,23 +18,23 @@
 #endif
 
 /*
- * Definition of Assertion methods, to be used inside of test cases for detailed logging of expected tesing conditions 
+ * Definition of Assertion methods, to be used inside of test cases for detailed logging of expected tesing conditions
  */
 
-/*
- * Assert equals asserts that the expected value is equal to the observed value, for the codition being tested.  If both values are equal
- *	the assertion will log an info message based on the condition, 
- *	if not equal an error message will be logged, and the test case will be reported as failed.
- *
- * Usage: assertEquals(const std::string& condition, const T1 expectedValue, const T2 actualValue) 
- *	condition     - a string representing the condition being tested
- *	expectedValue - the value that is expected for this test
- *	actualValue   - the value that was observed while running this test
- */
+ /*
+  * Assert equals asserts that the expected value is equal to the observed value, for the codition being tested.  If both values are equal
+  *	the assertion will log an info message based on the condition,
+  *	if not equal an error message will be logged, and the test case will be reported as failed.
+  *
+  * Usage: assertEquals(const std::string& condition, const T1 expectedValue, const T2 actualValue)
+  *	condition     - a string representing the condition being tested
+  *	expectedValue - the value that is expected for this test
+  *	actualValue   - the value that was observed while running this test
+  */
 template<typename T1, typename T2> void TESTING_HARNESS_API assertEquals(const std::string&, const T1&, const T2&);
 
 /*
-* Assert not equals asserts that the expected value is different to the observed value, for the codition being tested.  
+* Assert not equals asserts that the expected value is different to the observed value, for the codition being tested.
 *	If the values are not equal the assertion will succeed and log an info message based on the condition,
 *	if not equal an error message will be logged, and the test case will be reported as failed.
 *
@@ -168,7 +163,7 @@ private:
 
 	void logFail(const std::string&);
 
-	static AssertionManager *instance;
+	static AssertionManager* instance;
 
 	std::stack<std::pair<std::pair<std::string, bool>, TestLogger*>> ctxStack;
 };
@@ -180,13 +175,13 @@ void assertEquals(const std::string& msg, const T1& t1, const T2& t2)
 
 	AssertionManager& assertM = AssertionManager::getInstance();
 
-	if (t2 == t1) 
+	if (t2 == t1)
 	{
 		std::stringstream s;
 		s << "assertEquals passed: " << msg << " received " << t1 << " while expecting " << t2;
 		assertM.logSuccess(s.str());
 	}
-	else 
+	else
 	{
 		std::stringstream s;
 		s << "assertEquals failed: " << msg << " received " << t1 << " while expecting " << t2;
@@ -207,7 +202,7 @@ void assertNotNull(const std::string& s, const T* const tPtr)
 		s << "assertNotNull passed for " << msg;
 		assertM.logSuccess(s.str());
 	}
-	else 
+	else
 	{
 		std::stringstream s;
 		s << "assertNotNull failed " << msg;

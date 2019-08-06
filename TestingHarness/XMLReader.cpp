@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // XMLReader.cpp - XMLReader class definition                                //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 /*
 * Package Operations :
@@ -103,7 +98,7 @@ std::string XmlReader::element()
 		locpos1 = _xml.find(_tag, locpos1);
 		if (locpos1 >= _xml.size())
 			break;
-		if (_xml[locpos1 - 1] == '/' && _xml[locpos1 + _tag.size()] == '>') 
+		if (_xml[locpos1 - 1] == '/' && _xml[locpos1 + _tag.size()] == '>')
 			tagStack.pop();
 		else if (_xml[locpos1 - 1] == '<')
 			tagStack.push(_tag);

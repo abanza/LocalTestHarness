@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestExecutor.cpp - TestExecutor class definition                          //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #include <Windows.h>
 
@@ -26,7 +21,7 @@ using std::endl;
 using std::logic_error;
 using std::string;
 
-ITest* loadTestDriver(const char* , const string);
+ITest* loadTestDriver(const char*, const string);
 bool runTestDriver(const TestingContext&, const TestDriver&);
 
 int main()
@@ -54,10 +49,10 @@ int main()
 	Tests tests = FileManager::readTestFile("testXML.xml");
 
 	//For each test entry in test
-	for(Test test: tests)
+	for (Test test : tests)
 	{
 		// loop over test drivers in each test
-		for(TestDriver test_driver : test._testdrivers)
+		for (TestDriver test_driver : test._testdrivers)
 		{
 			cumulativeTestingResult |= runTestDriver(testingCtx, test_driver);
 		}
@@ -76,7 +71,7 @@ bool runTestDriver(const TestingContext& testingCtx, const TestDriver& test_driv
 	const string factoryName = test_driver._factory_method_nm;
 	ITest* itestHandler = loadTestDriver(libName, factoryName);
 
-	if (itestHandler != nullptr) 
+	if (itestHandler != nullptr)
 	{
 
 		// load any required libraries for our test driver
@@ -95,7 +90,7 @@ bool runTestDriver(const TestingContext& testingCtx, const TestDriver& test_driv
 
 		return result;
 	}
-	else 
+	else
 	{
 		cout << "failed to get test driver" << endl;
 	}
@@ -129,14 +124,14 @@ ITest* loadTestDriver(const char* libraryName, const string factoryFnName)
 	delete libName;
 
 	// see if the libary was loaded
-	if (NULL != hDLL) 
+	if (NULL != hDLL)
 	{
 
 		// Load the factory method from out library
 		TestFactory factory = (TestFactory)GetProcAddress(hDLL, factoryFnName.c_str());
 
 		// see if we successfully loaded our library
-		if (factory != nullptr) 
+		if (factory != nullptr)
 		{
 			// success print happy message
 			cout << "Loaded factory method " << factoryFnName << "() from library: " << libraryName << endl;
@@ -146,17 +141,17 @@ ITest* loadTestDriver(const char* libraryName, const string factoryFnName)
 
 			factory(&itest);
 
-			if (itest != nullptr) 
+			if (itest != nullptr)
 			{
 				return itest;
 			}
-			else 
+			else
 			{
 				// fail print unhappy message
 				cerr << "factory method " << factoryFnName << "(): did not return an ITest instance from testing library: " << libraryName << endl;
 			}
 		}
-		else 
+		else
 		{
 			// fail print unhappy message
 			cerr << "could not load factory method " << factoryFnName << "() from library: " << libraryName << endl;

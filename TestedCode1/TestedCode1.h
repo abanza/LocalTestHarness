@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestedCode1.h - TestedCode1 class definition                              //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef TESTED_CODE1_H
 #define TESTED_CODE1_H
@@ -22,27 +17,28 @@
 class TESTED_CODE1_API TestedCode1
 {
 public:
-	static bool returnsFalse() 
-	{ 
-		return false; 
+	static bool returnsFalse()
+	{
+		return false;
 	}
 
-	static bool returnsTrue() 
-	{ 
+	static bool returnsTrue()
+	{
 		return true;
 	}
 
 	static int returnsOne()
 	{
-		return 1; 
+		return 1;
 	}
 
-	static int returnsTwo() 
-	{ return 2; 
+	static int returnsTwo()
+	{
+		return 2;
 	}
 
-	static int throwsException() 
-	{ 
+	static int throwsException()
+	{
 		throw std::exception("Throws Exception");
 	}
 };

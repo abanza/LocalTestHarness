@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestingHarness.cpp - TestingHarness class definition                      //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #include <stdexcept>
 #include "../Includes/TestHarness.h"
@@ -158,27 +153,27 @@ void TestHarness::flush() const
 /*
 * logging methods by severity, takes in the context string and a message to log
 */
-void TestHarness::log(int severity, const std::string&ctxStr, const std::string& msg) const
+void TestHarness::log(int severity, const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().log(severity, ctxStr, msg);
 }
-void TestHarness::trace(const std::string&ctxStr, const std::string& msg) const
+void TestHarness::trace(const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().trace(ctxStr, msg);
 }
-void TestHarness::debug(const std::string&ctxStr, const std::string& msg) const
+void TestHarness::debug(const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().debug(ctxStr, msg);
 }
-void TestHarness::info(const std::string&ctxStr, const std::string& msg) const
+void TestHarness::info(const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().info(ctxStr, msg);
 }
-void TestHarness::warn(const std::string&ctxStr, const std::string& msg) const
+void TestHarness::warn(const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().warn(ctxStr, msg);
 }
-void TestHarness::error(const std::string&ctxStr, const std::string& msg) const
+void TestHarness::error(const std::string& ctxStr, const std::string& msg) const
 {
 	this->testLogger->getLogger().error(ctxStr, msg);
 }

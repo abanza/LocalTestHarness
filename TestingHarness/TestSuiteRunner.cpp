@@ -1,11 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TestSuiteRunner.cpp - TestSuiteRunner class definition                    //
-// ver 1.0                                                                   //
-// Language:    C++, Visual Studio 2017                                      //
-// Platform:    HP G1 800, Windows 10                                        //
-// Application: Local Test Harness Project2, CSE687 - Object Oriented Design //
 // Author:      Adelard Banza,                                               //
-//              abanza@syr.edu                                               //
 ///////////////////////////////////////////////////////////////////////////////
 #include <stdexcept>
 #include "../Includes/TestHarness.h"
@@ -47,11 +42,11 @@ bool TestSuiteRunner::run(const string& context, TestLogger& testLogger) const
 	testResult &= assertResults;
 
 	// log completion of the test suite
-	if (testResult) 
+	if (testResult)
 	{
 		testLogger.logTestSuiteSuccess(context);
 	}
-	else 
+	else
 	{
 		testLogger.logTestSuiteFail(context);
 	}
