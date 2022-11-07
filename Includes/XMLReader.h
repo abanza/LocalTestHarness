@@ -3,11 +3,10 @@
 ///////////////////////////////////////////////////////////////////////
 // XmlReader.h - Parse XML strings                                   //
 // ver 2.3                                                           //
-// Language:    Visual C++, Visual Studio 2010, SP1                  //
-// platform:    Toshiba Portege R705, Windows 7, Home Premium, SP1   //
-// Application: Summer 2011 Projects                                 //
-// Author:      Jim Fawcett, Syracuse University, CST 4-187          //
-//              www.lcs.syr.edu/faculty/fawcett, (315) 443-3948      //
+// Language:    Visual C++, Visual Studio 2017                       //
+// platform:    HP Desktop, Windows 10                               //
+// Application: Summer 2018 Projects                                 //
+// Author:      Adelard Banza                                        //                                                              
 ///////////////////////////////////////////////////////////////////////
 /*
 * Note: XmlReader and XmlWriter supercede both XmlTran and XmlParser.
